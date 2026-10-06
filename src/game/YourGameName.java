@@ -12,11 +12,13 @@ import java.awt.event.*;
 
 class YourGameName extends Game {
 	static int counter = 0;
+	private Element e;
 
   public YourGameName() {
     super("YourGameName!",800,600);
     this.setFocusable(true);
 	this.requestFocus();
+	
   }
   
 	public void paint(Graphics brush) {
@@ -29,8 +31,6 @@ class YourGameName extends Game {
     	counter++;
     	brush.setColor(Color.white);
     	brush.drawString("Counter is " + counter, 10, 10);
-    	Point[] l = {new Point(0,0), new Point(10,0), new Point(0,10)};
-    	Polygon p = new Polygon(l, new Point(10,10), 0);
     	
   }
   
