@@ -21,7 +21,27 @@ class UnicornGame extends Game {
 	
   }
   
-	public void paint(Graphics brush) {
+  public class Scorekeeper {
+	 private int score;
+	 
+	 public Scorekeeper() {
+		 score = 0;
+	 }
+	 
+	 public int getScore() {
+		 return score;
+	 }
+	 
+	 public void updateScore(int num) {
+		 score += num;
+	 }
+	 
+	 public boolean isGameOver() {
+		 return false; /* placeholder value until we implement this method */
+	 }
+  }
+  
+  	public void paint(Graphics brush) {
     	brush.setColor(Color.black);
     	brush.fillRect(0,0,width,height);
     	
