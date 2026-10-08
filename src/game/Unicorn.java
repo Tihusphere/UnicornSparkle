@@ -9,7 +9,8 @@ public class Unicorn extends Element{
 		state = UnicornState.CENTER;
 		animations = new Animation[5];
 	}
-	
+	//initialization blocks for objects of animation class
+		
 	public class Animation {
 		public int degreeOfRotation;
 		public Point[] shape;
@@ -17,7 +18,20 @@ public class Unicorn extends Element{
 		public Animation() {
 			
 		}
+		
 	}
+	{ //initialize types of animations
+		
+	}			
+
+	{
+			
+	}
+		
+	{
+			
+	}
+	
 	
 	public void paint() {
 		
