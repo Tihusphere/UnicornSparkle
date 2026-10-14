@@ -1,5 +1,6 @@
 package game;
 
+@FunctionalInterface
 public interface Pickupable {
-	public abstract void pickup();
+	public void pickup();
 }
