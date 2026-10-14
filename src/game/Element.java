@@ -30,4 +30,13 @@ public class Element extends Polygon {
 		position.x += x;
 		position.y += y;
 	}
+	
+	public boolean checkCollision(Element e) {
+		for (Point p : e.shape) {
+			if (super.contains(p)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
