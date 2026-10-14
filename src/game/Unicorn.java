@@ -40,10 +40,19 @@ public class Unicorn extends Element{
 	}
 	
 	public void move(int movement) {
+		
+		if (movement > 0) {
+			changeState(UnicornState.UP);
+		} else if (movement < 0) {
+			changeState(UnicornState.DOWN);
+		} else {
+			changeState(UnicornState.CENTER);
+		}
+		
 		super.move(0, movement, 0);
 	}
 	
-	public void changeState(UnicornState state) {
+	private void changeState(UnicornState state) {
 		this.state = state;
 		super.shape = animations[state.ordinal()].shape;
 		super.rotate(animations[state.ordinal()].degreeOfRotation);
