@@ -26,9 +26,10 @@ public class Element extends Polygon {
 		brush.drawPolygon(pointsXY[0], pointsXY[1], pointsXY[0].length);
 	}
 	
-	public void move(int x, int y) {
+	public void move(int x, int y, int r) {
 		position.x += x;
 		position.y += y;
+		super.rotate(r);
 	}
 	
 	public boolean checkCollision(Element e) {
