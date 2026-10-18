@@ -52,17 +52,7 @@ class UnicornGame extends Game {
   	public void paint(Graphics brush) {
     	brush.setColor(Color.black);
     	brush.fillRect(0,0,width,height);
-    	unicornPaint(brush);
-  	}
-  	
-  	public void unicornPaint(Graphics brush) {
-  		brush.setColor(Color.white);
-  		unicorn.paint(brush);
-  	}
-  	
-  	public void thundercloudPaint(Graphics brush) {
-  		brush.setColor(Color.white);
-  		
+    	unicorn.paint(brush);
   	}
   
 	public static void main (String[] args) {
