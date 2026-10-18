@@ -50,6 +50,7 @@ public class Unicorn extends Element{
 	
 	
 	public void paint(Graphics brush) {
+		brush.setColor(Color.pink);
 		super.paint(brush);
 	}
 	
