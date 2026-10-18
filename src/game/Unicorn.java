@@ -24,14 +24,22 @@ public class Unicorn extends Element{
 	{ //animation states init
 		animations = new Animation[3];
 		
-		int[][] upShape = {{0,0}};
-		animations[0] = new Unicorn.Animation(0, upShape);
+		int[][] upShape = {{0,0},{1,2},{1,3},{0,3},{0,5},{2,5},{2,11},{3,12},
+				{4,12},{3,11},{3,10},{4,10},{4,11},{5,12},{6,12},{5,11},{5,10},
+				{6,10},{7,12},{8,12},{8,7},{7,7},{7,6},{9,6},{10,5},{10,4},{6,4}
+				,{4,6},{4,2},{2,2}};
+		animations[0] = new Unicorn.Animation(15, upShape);
 		
-		int[][] centerShape = {{0,0},{1,2},{1,3},{0,3},{0,5},{2,5},{2,12},{3,12},{3,10},{4,10},{4,12},{5,12},{5,10},{6,10},{6,12},{8,12},{8,7},{7,7},{9,5},{9,3},{7,3},{4,6},{4,2},{2,2}};
+		int[][] centerShape = {{0,0},{1,2},{1,3},{0,3},{0,5},{2,5},{2,12},
+				{3,12},{3,10},{4,10},{4,12},{5,12},{5,10},{6,10},{6,12},{8,12},
+				{8,7},{7,7},{9,5},{9,3},{7,3},{4,6},{4,2},{2,2}};
 		animations[1] = new Unicorn.Animation(0, centerShape);
 		
-		int[][] downShape = {{0,0}};
-		animations[2] = new Unicorn.Animation(0, downShape);
+		int[][] downShape = {{0,0},{1,2},{1,3},{0,3},{0,5},{2,5},{2,11},{3,12},
+				{4,12},{3,11},{3,10},{4,10},{4,11},{5,12},{6,12},{5,11},{5,10},
+				{6,10},{7,12},{8,12},{8,7},{7,7},{7,6},{9,6},{10,5},{10,4},{6,4}
+				,{4,6},{4,2},{2,2}};
+		animations[2] = new Unicorn.Animation(-15, downShape);
 	}
 	
 	public Unicorn(Point position) {
@@ -42,6 +50,7 @@ public class Unicorn extends Element{
 	
 	
 	public void paint(Graphics brush) {
+		brush.setColor(Color.pink);
 		super.paint(brush);
 	}
 	
