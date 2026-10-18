@@ -9,18 +9,23 @@ NOTE: This class is the metaphorical "main method" of your program,
 */
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 class UnicornGame extends Game {
 
+	private Scorekeeper score;
 	private Unicorn unicorn;
+	private ArrayList<Pickupable> objects;
+	
 			
   public UnicornGame() {
     super("Unicorn Game!",800,600);
     this.setFocusable(true);
 	this.requestFocus();
 	
-	unicorn = new Unicorn(UnicornState.CENTER, )
-	
+	score = new Scorekeeper();
+	unicorn = new Unicorn(new Point(0, 0));
+	objects = new ArrayList<Pickupable>();	
 	
   }
   
