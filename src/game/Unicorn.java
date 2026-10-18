@@ -4,34 +4,40 @@ import game.Point;
 
 public class Unicorn extends Element{
 	private UnicornState state;
-	private static Animation[] animations;
+	private Animation[] animations;
 	
 	public class Animation {
 		private int degreeOfRotation;
 		private Point[] shape;
+		private static int mod = 8;
 		
-		public Animation(int degree, Point[] shape) {
+		public Animation(int degree, int[][] shapePts) {
 			this.degreeOfRotation = degree;
+			Point[] shape = new Point[shapePts.length];
+			for (int i = 0; i < shapePts.length; i++) {
+				shape[i] = new Point(shapePts[i][0]*mod, shapePts[i][1]*mod);
+			}
 			this.shape = shape;
 		}
-		
 	}
 	
 	{ //animation states init
-		Point[] upShape = {new Point(2,0), new Point(2,7), new Point(0,7), new Point(0,9), new Point(1,9), new Point(1,10), new Point(0,12), new Point(2,10), new Point(4,10), new Point(4,7), new Point(5,7), new Point(8,10), new Point(10,10), new Point(10,7), new Point(7,5), new Point(8,5), new Point(8,0), new Point(6,0), new Point(6,2), new Point(5,2), new Point(5,0), new Point(4,0), new Point(4,2), new Point(3,2), new Point(3,0)};
+		animations = new Animation[3];
+		
+		int[][] upShape = {{0,0}};
 		animations[0] = new Unicorn.Animation(0, upShape);
 		
-		Point[] centerShape = {new Point(0,0)};
-		animations[0] = new Unicorn.Animation(0, centerShape);
+		int[][] centerShape = {{0,0},{1,2},{1,3},{0,3},{0,5},{2,5},{2,12},{3,12},{3,10},{4,10},{4,12},{5,12},{5,10},{6,10},{6,12},{8,12},{8,7},{7,7},{9,5},{9,3},{7,3},{4,6},{4,2},{2,2}};
+		animations[1] = new Unicorn.Animation(0, centerShape);
 		
-		Point[] downShape = {new Point(0,0)};
-		animations[0] = new Unicorn.Animation(0, downShape);
+		int[][] downShape = {{0,0}};
+		animations[2] = new Unicorn.Animation(0, downShape);
 	}
 	
 	public Unicorn(Point position) {
-		super(animations[UnicornState.CENTER.ordinal()].shape, position, 
-				animations[UnicornState.CENTER.ordinal()].degreeOfRotation);
+		super(new Point[]{new Point(0,0), new Point(0,1)}, position, 0);
 		state = UnicornState.CENTER;
+		changeState(state);
 	}
 	
 	
