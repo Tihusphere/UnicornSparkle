@@ -24,8 +24,8 @@ class UnicornGame extends Game {
 	this.requestFocus();
 	
 	score = new Scorekeeper();
-	unicorn = new Unicorn(new Point(0, 0));
-	objects = new ArrayList<Pickupable>();	
+	unicorn = new Unicorn(new Point(400, 300));
+	objects = new ArrayList<Pickupable>();
 	
   }
   
@@ -52,8 +52,18 @@ class UnicornGame extends Game {
   	public void paint(Graphics brush) {
     	brush.setColor(Color.black);
     	brush.fillRect(0,0,width,height);
-    	
-  }
+    	unicornPaint(brush);
+  	}
+  	
+  	public void unicornPaint(Graphics brush) {
+  		brush.setColor(Color.white);
+  		unicorn.paint(brush);
+  	}
+  	
+  	public void thundercloudPaint(Graphics brush) {
+  		brush.setColor(Color.white);
+  		
+  	}
   
 	public static void main (String[] args) {
    		UnicornGame a = new UnicornGame();
