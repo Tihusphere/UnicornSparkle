@@ -4,11 +4,11 @@ import java.awt.*;
 
 import game.Point;
 
-public class Rainbow extends Element implements GameItem{
+public class Star extends Element implements GameItem{
 	private int scoreVal;
 	private Pickupable pickup;
 	
-	public Rainbow(Point position, Pickupable pickup, int score) {
+	public Star(Point position, Pickupable pickup, int score) {
 		super(new Point[]{new Point(0,0)}, position, 0);
 		this.scoreVal = score;
 		this.pickup = pickup;
