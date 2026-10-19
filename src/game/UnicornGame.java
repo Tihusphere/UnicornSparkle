@@ -24,7 +24,7 @@ class UnicornGame extends Game {
 	this.requestFocus();
 	
 	score = new Scorekeeper();
-	unicorn = new Unicorn(new Point(400, 300));
+	unicorn = new Unicorn(new Point(720, 230));
 	//what needs to happen here:
 	//needs to crate multiple objects of thunderCloud and Star classes (every few seconds we have more objects added to the arrayList of pickupable objects
 	//every frame, has to check if the unicorn bumped into a thundercloud or a star
