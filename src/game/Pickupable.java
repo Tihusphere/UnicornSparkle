@@ -2,5 +2,5 @@ package game;
 
 @FunctionalInterface
 public interface Pickupable {
-	public void pickup(int score);
+	public int pickup(int score);
 }

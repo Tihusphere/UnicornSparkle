@@ -15,6 +15,8 @@ class UnicornGame extends Game {
 
 	private Scorekeeper score;
 	private Unicorn unicorn;
+	private Star star;
+	private ThunderCloud cloud;
 	private ArrayList<Pickupable> objects;
 	
 			
@@ -25,6 +27,9 @@ class UnicornGame extends Game {
 	
 	score = new Scorekeeper();
 	unicorn = new Unicorn(new Point(720, 230));
+	star = new Star(new Point(100, 350), (scoreVal) -> scoreVal + 1, 5);
+	cloud = new ThunderCloud(new Point());
+	
 	//what needs to happen here:
 	//needs to crate multiple objects of thunderCloud and Star classes (every few seconds we have more objects added to the arrayList of pickupable objects
 	//every frame, has to check if the unicorn bumped into a thundercloud or a star
@@ -61,6 +66,9 @@ class UnicornGame extends Game {
     	brush.setColor(Color.black);
     	brush.fillRect(0,0,width,height);
     	unicorn.paint(brush);
+    	star.paint(brush);
+    	cloud.paint(brush);
+    	
     	
   	}
   
