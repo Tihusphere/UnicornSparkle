@@ -25,6 +25,14 @@ class UnicornGame extends Game {
 	
 	score = new Scorekeeper();
 	unicorn = new Unicorn(new Point(400, 300));
+	//what needs to happen here:
+	//needs to crate multiple objects of thunderCloud and Star classes (every few seconds we have more objects added to the arrayList of pickupable objects
+	//every frame, has to check if the unicorn bumped into a thundercloud or a star
+	//if collision occured, then edit the score
+	//once there have been 3 collisions, then the game should be over.
+	//then clear the board and draw the string "game over. Final Score: <display score>"
+	
+	
 	objects = new ArrayList<Pickupable>();
 	
   }
@@ -53,6 +61,7 @@ class UnicornGame extends Game {
     	brush.setColor(Color.black);
     	brush.fillRect(0,0,width,height);
     	unicorn.paint(brush);
+    	
   	}
   
 	public static void main (String[] args) {
