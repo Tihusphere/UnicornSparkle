@@ -10,6 +10,7 @@ NOTE: This class is the metaphorical "main method" of your program,
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 class UnicornGame extends Game {
 
@@ -17,59 +18,98 @@ class UnicornGame extends Game {
 	private Unicorn unicorn;
 	private Star star;
 	private ThunderCloud cloud;
-	private ArrayList<Pickupable> objects;
 	
-			
-  public UnicornGame() {
-    super("Unicorn Game!",800,600);
-    this.setFocusable(true);
-	this.requestFocus();
+	private Random rand;
+	private long frameCount;
+	private ArrayList<Element> objects;
+	private int hits;
 	
-	score = new Scorekeeper();
-	unicorn = new Unicorn(new Point(720, 230));
-	star = new Star(new Point(100, 350), (scoreVal) -> scoreVal + 1, 5);
-	cloud = new ThunderCloud(new Point());
+	public UnicornGame() {
+		super("Unicorn Game!",800,600);
+		this.setFocusable(true);
+		this.requestFocus();
 	
-	//what needs to happen here:
-	//needs to crate multiple objects of thunderCloud and Star classes (every few seconds we have more objects added to the arrayList of pickupable objects
+		score = new Scorekeeper();
+		unicorn = new Unicorn(new Point(720, 230));
+		rand = new Random();
+		frameCount = 0;
+		hits = 0;
+
 	//every frame, has to check if the unicorn bumped into a thundercloud or a star
 	//if collision occured, then edit the score
 	//once there have been 3 collisions, then the game should be over.
 	//then clear the board and draw the string "game over. Final Score: <display score>"
 	
 	
-	objects = new ArrayList<Pickupable>();
+		objects = new ArrayList<Element>();
 	
-  }
+	}
   
-  public class Scorekeeper {
-	 private int score;
+	public class Scorekeeper {
+		private int score;
 	 
-	 public Scorekeeper() {
-		 score = 0;
-	 }
-	 
-	 public int getScore() {
-		 return score;
-	 }
-	 
-	 public void updateScore(int num) {
-		 score += num;
-	 }
-	 
-	 public boolean isGameOver() {
-		 return false; /* placeholder value until we implement this method */
-	 }
-  }
+	 	public Scorekeeper() {
+	 		score = 0;		 	
+	 	} 
+	 	
+		public int getScore() {
+	 		return score;
+	 	}
+		 
+		public void updateScore(int num) {
+	 		score += num;
+	 	}
+		 
+		public boolean isGameOver() {
+	 		if (hits >= 3) {
+	 			return true;
+	 		}
+		 	return false; 
+		}
+	}
   
   	public void paint(Graphics brush) {
     	brush.setColor(Color.black);
     	brush.fillRect(0,0,width,height);
-    	unicorn.paint(brush);
-    	star.paint(brush);
-    	cloud.paint(brush);
     	
+    	if (score.isGameOver()) {
+    		brush.setColor(Color.RED);
+    		brush.drawString("Game Over!", 300, 300);
+    		brush.drawString("Your Score: " + score.getScore(), 400, 300);
+    		brush.drawString("Close the window and rerun the program to play again!", 220, 320);
+    	}
     	
+    	else {
+    		unicorn.paint(brush);
+        	
+        	for (int index = 0; index < objects.size(); index++) {
+           		Element element = objects.get(index);
+           		element.paint(brush);
+           		element.move(1, 0, 0);
+           		
+           		if (element.checkCollision(unicorn)) {
+           			if (element.getClass().equals(star.getClass())) {
+           				((Star)element).pickup();
+           				objects.remove(element);
+           			}
+           			else if (element.getClass().equals(cloud.getClass())) {
+           				((ThunderCloud)element).pickup();
+           				objects.remove(element);
+           				hits++;
+           			}
+           		}
+           	}
+        	
+        	if (frameCount % 50 ==0) {
+        		star = new Star(new Point(90, rand.nextInt(10, 520)), 5, (scoreVal) -> score.updateScore(scoreVal));
+            	objects.add(star);
+              	cloud = new ThunderCloud(new Point(10, rand.nextInt(10, 520)), 10, (scoreVal) -> score.updateScore(scoreVal));
+              	objects.add(cloud);
+        	}
+           	
+           	frameCount = frameCount + 1L;
+    	}
+  
   	}
   
 	public static void main (String[] args) {

@@ -6,7 +6,7 @@ public class ThunderCloud extends Element implements GameItem{
 	private int scoreVal;
 	private Pickupable pickup;
 	
-	public ThunderCloud(Point position, Pickupable pickup, int score) {
+	public ThunderCloud(Point position, int score, Pickupable pickup) {
 		super(new Point[]{new Point(0,0)}, position, 0);
 		this.scoreVal = score;
 		this.pickup = pickup;

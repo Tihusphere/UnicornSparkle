@@ -8,7 +8,7 @@ public class Star extends Element implements GameItem{
 	private int scoreVal;
 	private Pickupable pickup;
 	
-	public Star(Point position, Pickupable pickup, int score) {
+	public Star(Point position, int score, Pickupable pickup) {
 		super(new Point[]{new Point(0,0)}, position, 0);
 		this.scoreVal = score;
 		this.pickup = pickup;
