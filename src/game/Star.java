@@ -23,7 +23,7 @@ public class Star extends Element implements GameItem{
 	}
 	
 	public void pickup() {
-		this.pickup.pickup();
+		this.pickup.pickup(scoreVal);
 	} 
 	
 	public void paint(Graphics brush) {
