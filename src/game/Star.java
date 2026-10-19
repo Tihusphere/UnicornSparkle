@@ -28,6 +28,7 @@ public class Star extends Element implements GameItem{
 	
 	public void paint(Graphics brush) {
 		brush.setColor(Color.yellow);
+		super.rotate(1);
 		super.paint(brush);
 	}
 }
