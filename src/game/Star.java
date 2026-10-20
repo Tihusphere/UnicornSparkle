@@ -1,5 +1,10 @@
 package game;
-
+/**
+ * CLASS: Star
+ * DESCRIPTION: Creates a yellow star element that can hurl and spin towards the Unicorn. Multiple stars will be created 
+ * during the game. Colliding with a star increases the player's score. 
+ * USAGE: Star instances are created within the UnicornGame class.
+ */
 import java.awt.*;
 
 import game.Point;
@@ -8,6 +13,15 @@ public class Star extends Element implements GameItem{
 	private int scoreVal;
 	private Pickupable pickup;
 	
+	/**
+	 * Constructor for Star class. Assigns the set of points that outline a star and creates a Point[] array to store 
+	 * aforementioned points. The mod integer scales all the points up to make the star a realistic size 
+	 * relative to the Unicorn.
+	 * 
+	 * @param position	assigns initial position of the element on the game GUI
+	 * @param score		assigns the value by which the player's score is increased by (upon the Unicorn's collision with the star).
+	 * @param pickup	assigns implementation of pickup() method 
+	 */
 	public Star(Point position, int score, Pickupable pickup) {
 		super(new Point[]{new Point(0,0)}, position, 0);
 		this.scoreVal = score;
@@ -22,10 +36,16 @@ public class Star extends Element implements GameItem{
 		super.shape = shape;
 	}
 	
+	/**
+	 * Calls the pickup() method from Pickupable class, which increases the player's score based on the Star's score value.
+	 */
 	public void pickup() {
 		this.pickup.pickup(scoreVal);
 	} 
 	
+	/**
+	 * Paint method that allows a Star to appear on the swing GUI.
+	 */
 	public void paint(Graphics brush) {
 		brush.setColor(Color.yellow);
 		super.rotate(1);

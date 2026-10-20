@@ -2,10 +2,22 @@ package game;
 
 import java.awt.*;
 
+/**
+ * CLASS: ThunderCloud
+ * DESCRIPTION: Thunderclouds are the 'obstacles' of the game. If a Unicorn collides into one, the score will decerase.
+ * Too many hits and the game is over!
+ */
 public class ThunderCloud extends Element implements GameItem{
 	private int scoreVal;
 	private Pickupable pickup;
 	
+	/**
+	 * ThunderCloud constructor. Defines Thundercloud's points and scales it up to the correct size.
+	 * 
+	 * @param position sets the position on the swing GUI board
+	 * @param score	sets the value that the player's score is decremented by.
+	 * @param pickup provides implementation for Pickupable functional interface's method, which updates the score.
+	 */
 	public ThunderCloud(Point position, int score, Pickupable pickup) {
 		super(new Point[]{new Point(0,0)}, position, 0);
 		this.scoreVal = score;
@@ -21,10 +33,17 @@ public class ThunderCloud extends Element implements GameItem{
 		super.shape = shape;
 	}
 	
+	/**
+	 * Calls pickup() method in Pickupable interface. Called upon collision with Unicorn, which updates the player's score.
+	 * 	 
+	 */
 	public void pickup() {
 		this.pickup.pickup(scoreVal);
 	} 
 	
+	/**
+	 * Paints the Thunder Cloud in the game with a gray outline.
+	 */
 	public void paint(Graphics brush) {
 		brush.setColor(Color.gray);
 		super.paint(brush);
