@@ -98,9 +98,7 @@ class UnicornGame extends Game implements KeyListener{
            		}
            	}
         	
-        	
-        	
-        	if (frameCount % 50 ==0) {
+        	if (frameCount % 300 == 0) {
         		star = new Star(new Point(90, rand.nextInt(10, 520)), 5, (scoreVal) -> score.updateScore(scoreVal));
             	objects.add(star);
               	cloud = new ThunderCloud(new Point(10, rand.nextInt(10, 520)), 10, (scoreVal) -> score.updateScore(scoreVal));
@@ -127,10 +125,10 @@ class UnicornGame extends Game implements KeyListener{
 		// TODO Auto-generated method stub
 		
 		if (e.getKeyCode() == e.VK_UP) {
-			unicorn.move(1);
+			unicorn.move(5);
 		}
 		else if (e.getKeyCode() == e.VK_DOWN){
-			unicorn.move(-1);
+			unicorn.move(-5);
 		}
 		
 	}
