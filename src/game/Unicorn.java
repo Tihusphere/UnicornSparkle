@@ -64,7 +64,7 @@ public class Unicorn extends Element{
 			changeState(UnicornState.CENTER);
 		}
 		
-		super.move(0, movement, 0);
+		super.move(0, -movement, 0);
 	}
 	
 	private void changeState(UnicornState state) {

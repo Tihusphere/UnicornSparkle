@@ -12,7 +12,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-class UnicornGame extends Game {
+class UnicornGame extends Game implements KeyListener{
 
 	private Scorekeeper score;
 	private Unicorn unicorn;
@@ -28,18 +28,16 @@ class UnicornGame extends Game {
 		super("Unicorn Game!",800,600);
 		this.setFocusable(true);
 		this.requestFocus();
-	
+
 		score = new Scorekeeper();
 		unicorn = new Unicorn(new Point(720, 230));
 		rand = new Random();
 		frameCount = 0;
 		hits = 0;
+		
+		this.addKeyListener(this);
 
 	//every frame, has to check if the unicorn bumped into a thundercloud or a star
-	//if collision occured, then edit the score
-	//once there have been 3 collisions, then the game should be over.
-	//then clear the board and draw the string "game over. Final Score: <display score>"
-	
 	
 		objects = new ArrayList<Element>();
 	
@@ -100,6 +98,8 @@ class UnicornGame extends Game {
            		}
            	}
         	
+        	
+        	
         	if (frameCount % 50 ==0) {
         		star = new Star(new Point(90, rand.nextInt(10, 520)), 5, (scoreVal) -> score.updateScore(scoreVal));
             	objects.add(star);
@@ -116,4 +116,30 @@ class UnicornGame extends Game {
    		UnicornGame a = new UnicornGame();
 		a.repaint();
   }
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+		if (e.getKeyCode() == e.VK_UP) {
+			unicorn.move(1);
+		}
+		else if (e.getKeyCode() == e.VK_DOWN){
+			unicorn.move(-1);
+		}
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+		unicorn.move(0);
+		
+	}
 }
