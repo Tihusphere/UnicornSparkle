@@ -33,7 +33,7 @@ public class Element extends Polygon {
 	}
 	
 	public boolean checkCollision(Element e) {
-		for (Point p : e.shape) {
+		for (Point p : e.getPoints()) {
 			if (super.contains(p)) {
 				return true;
 			}
